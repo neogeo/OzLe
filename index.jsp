@@ -225,7 +225,7 @@
         
 	
 	<div class="apple_overlay" id="pictureOverlay"> 
-		
+		Come on feet!
 	</div> 
     </body>
 </html>
