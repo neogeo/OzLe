@@ -19,91 +19,13 @@
         <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.4/full/jquery.tools.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		
+		<script type="text/javascript" src="scripts/setUp.js"></script>
 
 
 
         <script type="text/javascript">
-            //define colors
-            var colors = { yellow:"#FFFF33", lightGreen:"#99FF33", green:"33FF66", 
-                lightBlue:"#33FFFF", blue:"#3366FF", darkBlue:"#6633FF", brown:"#C9B385"};
-
-            var counter = 1;
-			
-			function navButtonHandler(element){
-				$('#'+element).click(function(){
-					//color brown
-					$(this).animate({ backgroundColor: colors.brown	}, 300, function(){
-						//aniimation complete
-						//change to white
-						$(this).animate({ backgroundColor: 'white'}, 300)
-					});
-			   	});
-				
-				$('#'+element).hover(function(){
-				   		$(this).css("cursor","pointer");
-					
-				   		//does not exist add an extended bottom so that the mouse out event does not fire
-				   		if ($("#extender").length == 0) {
-							var newMenuItem = document.createElement("div");
-							newMenuItem.id = "extender";
-							$(this).append(newMenuItem);
-							$("#extender").css("height","15px").css("width","100%").css("margin-top","115px");
-						}
-						//bump up					
-				   		$(this).animate({ 
-	        				top: "-=15px",
-	      				}, 200, 'easeInBack' );
-			   		},function(){
-				   		$(this).css("cursor","default");
-				   		$("#extender").remove();
-						
-						$(this).animate({ 
-		        			top: "+=15px",
-		      			}, 200, 'easeOutQuad' );
-			   });
-			}
-			
-			function setUpOverlay(){
-				//initialize overlay
-				$(".thumbnail img[rel]").overlay({
-					effect: 'apple',
-					closeOnClick: true,
-					speed: 'fast',
-					onClose: function(){
-						$("#overlayImage").remove();
-					}
-				});
-				
-				$(".thumbnail img[rel]").click(function(){
-					//set overlay to load image
-					var numReg = /\d+/;
-					var imageNum = numReg.exec($(this).attr("id"));
-					var pictureToLoad = "";
-					
-					imageNum = imageNum - 0;
-					switch(imageNum){
-						case 1:  pictureToLoad = "1";  break;
-						case 2:  pictureToLoad = "2";  break;
-						case 3:  pictureToLoad = "3";  break;
-						case 4:  pictureToLoad = "4";  break;
-						case 5:  pictureToLoad = "5";  break;
-						case 6:  pictureToLoad = "6";  break;
-						case 7:  pictureToLoad = "7";  break;
-						case 8:  pictureToLoad = "8";  break;
-						case 9:  pictureToLoad = "9";  break;
-						case 10: pictureToLoad = "10"; break;
-						case 11: pictureToLoad = "11"; break;
-						case 12: pictureToLoad = "12"; break;
-						default: alert("image not found");
-					}
-					var oImg = document.createElement("img");
-					oImg.id = "overlayImage";
-					oImg.setAttribute('src', 'images/gallery/full'+pictureToLoad+'.jpeg');
-					
-					$("#pictureOverlay").append(oImg);
-				});
-			}
-			
+           
             $(document).ready(function(){
 				if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
 					var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
@@ -116,43 +38,31 @@
 				
 				
 				//register buttons
-			   navButtonHandler("welcome");
-			   navButtonHandler("where");
-			   navButtonHandler("rsvp");
-			   navButtonHandler("pics");
+			   	navButtonHandler("welcome");
+			   	navButtonHandler("where");
+			   	navButtonHandler("rsvp");
+			   	navButtonHandler("pics");
 				
-				//create scrollable
-                $(".scrollable").scrollable({
-                     circular: true
-                }).navigator({
-                    navi: '.navBar',
-                    naviItem: '.navBox'
-                });
+				
+				createScrollable();
 
 				//make pics overlay
 				setUpOverlay();
 				
-                //set form submission
-                $(":button").click(function(){
-                     var newdiv = document.createElement('div');
-                     newdiv.innerHTML = "Guset " + (counter + 1) + "<input type='text' name='guests[]'><br><br>";
-                     $("#dynamicGuests").append(newdiv);
-                      //$("#dynamicGuests").html("");
-
-                       counter++;
-                });
+              	setUpRSVPForm();
             });
 
         </script>
     </head>
     <body>
+			
 
-
-
+	
          <div id="frame">
             <div class="topBar"></div>
-            <div id="main" class="header">
 			<div class="banner"></div>
+            <div id="main" class="header">
+			
 
 
        
@@ -166,25 +76,43 @@
                <div class="items">
                   <div id="welcomeContent" class="content">
                      <div class="contentHeader"> <div class="bigText">Welcome</div> </div>
-					 
                   </div>
 				  
                   <div id="placeContent" class="content">
-                    <div class="bigText">The Place</div>
+                    <div class="contentHeader"><div class="bigText">The Place</div> </div>
                   </div>
 				  
                   <div id="rsvpContent" class="content">
                      <div class="contentHeader"> <div class="bigText">RSVP</div> </div>
                       <br><br><br><br><br>
-                      <span>"Be sure to let us know you're coming"</span>
+                      <div class="text">Be sure to let us know you're coming</div>
                       <br>
                       <div id="myForm">
-                            <form name="input" action="" method="POST">
-                                <div id="dynamicGuests">
-                                    Guest 1 <input type="text" name="guests[]" /><br>
+                            <form id="RSVP_form" name="input" action="" method="POST">
+                                <div id="dynamicGuests"> 
+									
+    									Guest<hr class="line" > 
+										<br/>
+	                                    	<div class="formLabel">First Name</div><input type="text" name="guests[]" /><br/>
+											<div class="formLabel">Last Name</div><input type="text" name="guests[]" />
+										<br/>
+										<div class="formLabel">Number of Guests</div>
+										<select id="numOfGuests">
+										  <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+										  <option>4</option>
+										  <option>5</option>
+										</select>
+										<br/>
+										<br/>
+										<input class="checkbox" type="checkbox" name="reception" value="reception" /> Attending Reception <br/>
+										<input class="checkbox" type="checkbox" name="wedding" value="wedding" />  Attending Wedding <br/>
+									
                                 </div>
-                                <input type="button" value="Add Guest" />
-                                <input type="submit" value="Submit"/>
+								<br/>
+                                <!--input type="button" value="Add Guest" /-->
+                                <input id="submitRSVP" type="submit" value="Submit"/>
                             </form> 
                       </div>
                   </div>

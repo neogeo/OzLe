@@ -136,7 +136,10 @@ root {
     font-size: 48px;
     text-transform: uppercase;
 }
-
+.text{
+	font-size:1.2em;
+	width:100%;
+}
 .thumbnail{
 	float:left;
 	width:100px;
@@ -157,4 +160,38 @@ root {
 	font-size:.8em;
 	margin-top:20px;
 	margin-right:70px;
+}
+
+/*RSVP Form*/
+fieldset{
+ 	border:none;
+}
+ 
+input{
+ 	margin-bottom: 5px;
+}
+ 
+#submitRSVP{
+	margin-top:10px;	
+	margin-left:225px;
+}
+
+.formLabel{
+	margin-left:10px;
+	margin-right:5px;
+	width:130px;
+	float:none;
+}
+ 
+.line{
+ 	display:inline-table;
+ 	width:248px;
+	height:2px;
+	border-width:0;
+	color:gray;
+	background-color:gray;
+}
+ 
+.checkbox{
+	margin-left:10px;
 }
