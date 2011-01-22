@@ -195,3 +195,17 @@ input{
 .checkbox{
 	margin-left:10px;
 }
+
+.loading{
+	height:400px; 
+	overflow: auto; 
+	text-align: center;
+	margin-left:40px;
+}
+.success{
+	display:none;
+	height:400px; 
+	overflow: auto; 
+	text-align: center;
+	margin:5px 0px 0px 15px;
+}

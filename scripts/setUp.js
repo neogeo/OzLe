@@ -2,7 +2,7 @@
 var colors = { yellow:"#FFFF33", lightGreen:"#99FF33", green:"33FF66", 
     lightBlue:"#33FFFF", blue:"#3366FF", darkBlue:"#6633FF", brown:"#C9B385"};
 
-var counter = 1;
+var counter = 0;
 
 //ser up nav buttons 
 function navButtonHandler(element){
@@ -92,14 +92,111 @@ function createScrollable(){
 }
 
 function setUpRSVPForm(){
-//set form submission
-$(":button").click(function(){
-     var newdiv = document.createElement('div');
-     newdiv.innerHTML = "Guset " + (counter + 1) + "<input type='text' name='guests[]'><br><br>";
-     $("#dynamicGuests").append(newdiv);
-
-       counter++;
-});
-
-
+	//set form submission
+	/*$(":button").click(function(){
+	 var newdiv = document.createElement('div');
+	 newdiv.innerHTML = "Guset " + (counter + 1) + "<input type='text' name='guests[]'><br><br>";
+	 $("#dynamicGuests").append(newdiv);
+	 counter++;
+	 });*/
+	$("#submitRSVP").click(function(){
+		var firstName = $("#rsvpFirstName").val();
+		var lastName = $("#rsvpLastName").val();
+		var numOfGuests = $("#rsvpNumOfGuests").val();
+		var reception = $("#rsvpReception:checked").val();
+		var wedding = $("#rsvpWedding:checked").val();
+		
+		//check input
+		firstName = (firstName == "") ? "blank" : firstName;
+		lastName = (lastName == "") ? "blank" : lastName;
+		reception = (reception == undefined) ? "blank" : reception;
+		wedding = (wedding == undefined) ? "blank" : wedding;
+		
+		//call sendMail
+		sendMail(firstName, lastName, numOfGuests, reception, wedding);
+	});
+	
 }
+
+function sendMail(firstName, lastName, numOfGuests, reception, wedding){
+	$("#RSVP_form").fadeOut("fast", function(){
+		//style
+		//show loading gif
+		setLoading("myForm");
+	});
+	
+	setTimeout(function(){
+		var info = document.createElement("div");
+		info.id = "result";
+		info.className = "success";
+		info.innerHTML = "Whoops, something unexpected happened. <br\/> Try again in a couple of minutes.";
+		$("#myForm").append(info);
+		
+		$("#loader").fadeOut("fast",function(){
+			$(".success").fadeIn("fast");
+		});
+	},5000);
+	/*
+	//make remote call
+	//if(counter Math.mod(counter, 2) == 0)
+	sendMailRemotelyOne(function(jsonStatusMsg, jsonString){
+				if (jsonStatusMsg.status.status == "success") {
+					//show success
+					var info = document.createElement("div");
+					info.id = "result";
+					info.className = "success";
+					info.innerHTML = "Thanks, your RSVP has been submitted";
+					$("#myForm").append(info);
+					
+					$("#loader").fadeOut("fast",function(){
+						$(".success").fadeIn("fast");
+					});
+				}else{//fail
+					//show error
+					var info = document.createElement("div");
+					info.id = "result";
+					info.className = "success";
+					info.innerHTML = "Whoops, something unexpected happened. <br\/> Try again in a couple of minutes.";
+					$("#myForm").append(info);
+					
+					$("#loader").fadeOut("fast",function(){
+						$(".success").fadeIn("fast");
+					});
+				}
+			}, 
+			firstName, lastName, numOfGuests, reception, wedding
+	);
+		*/
+	//increase counter
+	counter++;
+}
+
+function sendMailRemotelyOne(remoteCallback, firstName, lastName, numOfGuests, reception, wedding){
+	//try to load remotely
+	jQuery.ajax({ 	beforeSend: function(R) { R.setRequestHeader ( "Cache-Control", "no-cache, must-revalidate"); },
+			            url: "scripts/sendMail.jsp"+"?id="+new Date().getTime(), //prevent IE from caching response
+			            data: {'firstName':firstName, 'lastName':lastName, 'numOfGuests':numOfGuests, 'reception':reception, 'wedding':wedding },
+			            type: "POST", //use POST so the jsonString parameter may be very large
+			            dataType: "json",
+			            timeout: 60000,
+			            error: function(e1, e2){
+							var statusMsg = "{'status' : {'status':'failure', 'description':'"+ e1.statusText +"'} }";
+							//replace ticks with quotes for strict JSON parsing
+							statusMsg = statusMsg.replace(new RegExp(/'/g),"\"");
+							//output JSON object 
+							remoteCallback( JSON.parse(statusMsg) );
+			            },
+			            success: function(returned_data_json){
+						  	//de-seraialize json
+						  	var statusMsg = JSON.stringify(returned_data_json);
+							//replace ticks with quotes for strict JSON parsing
+							statusMsg = statusMsg.replace(new RegExp(/'/g),"\"");
+							//output JSON object 
+							remoteCallback( JSON.parse(statusMsg) );
+			            }
+		});
+}
+
+function setLoading(elementId) {
+	document.getElementById(elementId).innerHTML = "<div id='loader' class='loading'><br\/><img src='images/loading.gif' alt='Loading...' \/><\/div>";
+};

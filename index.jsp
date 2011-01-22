@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -39,10 +40,9 @@
 				
 				//register buttons
 			   	navButtonHandler("welcome");
-			   	navButtonHandler("where");
 			   	navButtonHandler("rsvp");
+			   	navButtonHandler("where");
 			   	navButtonHandler("pics");
-				
 				
 				createScrollable();
 
@@ -78,26 +78,22 @@
                      <div class="contentHeader"> <div class="bigText">Welcome</div> </div>
                   </div>
 				  
-                  <div id="placeContent" class="content">
-                    <div class="contentHeader"><div class="bigText">The Place</div> </div>
-                  </div>
-				  
                   <div id="rsvpContent" class="content">
                      <div class="contentHeader"> <div class="bigText">RSVP</div> </div>
                       <br><br><br><br><br>
                       <div class="text">Be sure to let us know you're coming</div>
                       <br>
                       <div id="myForm">
-                            <form id="RSVP_form" name="input" action="" method="POST">
+                            <form id="RSVP_form" name="input">
                                 <div id="dynamicGuests"> 
 									
     									Guest<hr class="line" > 
 										<br/>
-	                                    	<div class="formLabel">First Name</div><input type="text" name="guests[]" /><br/>
-											<div class="formLabel">Last Name</div><input type="text" name="guests[]" />
+	                                    	<div class="formLabel">First Name</div><input id="rsvpFirstName" type="text" name="firstName" /><br/>
+											<div class="formLabel">Last Name</div><input  id="rsvpLastName"  type="text" name="lastName"  />
 										<br/>
 										<div class="formLabel">Number of Guests</div>
-										<select id="numOfGuests">
+										<select id="rsvpNumOfGuests">
 										  <option>1</option>
 										  <option>2</option>
 										  <option>3</option>
@@ -106,15 +102,19 @@
 										</select>
 										<br/>
 										<br/>
-										<input class="checkbox" type="checkbox" name="reception" value="reception" /> Attending Reception <br/>
-										<input class="checkbox" type="checkbox" name="wedding" value="wedding" />  Attending Wedding <br/>
+										<input id="rsvpReception" class="checkbox" type="checkbox" name="reception" value="reception" /> Attending Reception <br/>
+										<input id="rsvpWedding"   class="checkbox" type="checkbox" name="wedding"   value="wedding" />   Attending Wedding <br/>
 									
                                 </div>
 								<br/>
                                 <!--input type="button" value="Add Guest" /-->
-                                <input id="submitRSVP" type="submit" value="Submit"/>
+                                <button id="submitRSVP" type="button">Submit</button>
                             </form> 
                       </div>
+                  </div><!--rsvp-->
+				  
+				   <div id="placeContent" class="content">
+                    <div class="contentHeader"><div class="bigText">The Place</div> </div>
                   </div>
 				  
 				  <div id="picsContent" class="content">
@@ -143,8 +143,8 @@
 			
             <div class="navBar">
                 <div id="welcome" class="navBox">Welcome</div>
-                <div id="where" class="navBox">The Place</div>
                 <div id="rsvp" class="navBox">RSVP</div>
+                <div id="where" class="navBox">The Place</div>
 				<div id="pics" class="navBox">Pictures</div>
             </div>
 			
