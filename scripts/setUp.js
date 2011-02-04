@@ -43,6 +43,7 @@ function navButtonHandler(element){
 function setUpOverlay(){
 	//initialize overlay
 	$(".thumbnail img[rel]").overlay({
+		mask: '#000',
 		effect: 'apple',
 		closeOnClick: true,
 		speed: 'fast',
@@ -53,31 +54,31 @@ function setUpOverlay(){
 	
 	$(".thumbnail img[rel]").click(function(){
 		//set overlay to load image
-		var numReg = /\d+/;
+		/*var numReg = /\d+/;
 		var imageNum = numReg.exec($(this).attr("id"));
 		var pictureToLoad = "";
 		
 		imageNum = imageNum - 0;
 		switch(imageNum){
-			case 1:  pictureToLoad = "1";  break;
-			case 2:  pictureToLoad = "2";  break;
-			case 3:  pictureToLoad = "3";  break;
-			case 4:  pictureToLoad = "4";  break;
-			case 5:  pictureToLoad = "5";  break;
-			case 6:  pictureToLoad = "6";  break;
-			case 7:  pictureToLoad = "7";  break;
-			case 8:  pictureToLoad = "8";  break;
-			case 9:  pictureToLoad = "9";  break;
-			case 10: pictureToLoad = "10"; break;
-			case 11: pictureToLoad = "11"; break;
-			case 12: pictureToLoad = "12"; break;
+			case 1:  pictureToLoad = "01.jpg";  break;
+			case 2:  pictureToLoad = "02.jpg";  break;
+			case 3:  pictureToLoad = "03.jpg";  break;
+			case 4:  pictureToLoad = "04.jpg";  break;
+			case 5:  pictureToLoad = "05.jpg";  break;
+			case 6:  pictureToLoad = "06.jpg";  break;
+			case 7:  pictureToLoad = "07";  break;
+			case 8:  pictureToLoad = "08";  break;
+			case 9:  pictureToLoad = "09";  break;
+			case 10: pictureToLoad = "10";  break;
+			case 11: pictureToLoad = "11";  break;
+			case 12: pictureToLoad = "12.jpg";  break;
 			default: alert("image not found");
 		}
 		var oImg = document.createElement("img");
 		oImg.id = "overlayImage";
-		oImg.setAttribute('src', 'images/gallery/full'+pictureToLoad+'.jpeg');
+		oImg.setAttribute('src', 'images/gallery/'+pictureToLoad);
 		
-		$("#pictureOverlay").append(oImg);
+		$("#pictureOverlay").append(oImg);*/
 	});
 }
 

@@ -11,7 +11,7 @@
 		width after the growing animation finishes
 		height is automatically calculated
 	*/
-	width:640px;		
+	width:635px;		
 	
 	/* some padding to layout nested elements nicely  */
 	padding:35px;
@@ -20,6 +20,50 @@
 	font-size:11px;
 }
 
+
+#pictureOverlay_01 {
+		background-image:url(/gallery/01.jpg);
+		width:400px;
+		height:600px;
+		padding:0px;
+}
+#pictureOverlay_02 {
+		background-image:url(/gallery/02.jpg);
+		width:800px;
+		height:534px;
+		padding:0px;
+}
+#pictureOverlay_03 {
+		background-image:url(/gallery/03.jpg);
+		width:400px;
+		height:600px;
+		padding:0px;
+}
+#pictureOverlay_04 {
+		background-image:url(/gallery/04.jpg);
+		width:492px;
+		height:600px;
+		padding:0px;
+}
+#pictureOverlay_05 {
+		background-image:url(/gallery/05.jpg);
+		width:800px;
+		height:534px;
+		padding:0px;
+}
+#pictureOverlay_06 {
+		background-image:url(/gallery/06.jpg);
+		width:800px;
+		height:534px;
+		padding:0px;
+}
+
+#pictureOverlay_12 {
+		background-image:url(/gallery/12.jpg);
+		width:600px;
+		height:400px;
+		padding:0px;
+}
 /* default close button positioned on upper right corner */
 .apple_overlay .close {
 	background-image:url(../overlay/close.png);
@@ -27,4 +71,6 @@
 	cursor:pointer;
 	height:35px;
 	width:35px;
+	right:-17px;
+	top:-17px;
 }

@@ -12,7 +12,7 @@ body{
     font: normal 14px Verdana, arial, helvetica, sans-serif;
     color: #000;
     margin: 0;
-    background: url(../images/background.jpg) repeat;
+    /*background: url(../images/background.jpg) repeat;*/
 }
 
 root { 

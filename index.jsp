@@ -120,19 +120,19 @@
 				  <div id="picsContent" class="content">
                     <div class="contentHeader"> <div class="bigText">Pictures</div> </div>
 					<div id="pictureFrame">
-						<div class="thumbnail"><img id="img1"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay" /></div>
-						<div class="thumbnail"><img id="img2"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
-						<div class="thumbnail"><img id="img3"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
-						<div class="thumbnail"><img id="img4"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
-						<div class="thumbnail"><img id="img5"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
-						<div class="thumbnail"><img id="img6"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
+						<div class="thumbnail"><img id="img1"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_01" /></div>
+						<div class="thumbnail"><img id="img2"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_02"/></div>
+						<div class="thumbnail"><img id="img3"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_03"/></div>
+						<div class="thumbnail"><img id="img4"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_04"/></div>
+						<div class="thumbnail"><img id="img5"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_05"/></div>
+						<div class="thumbnail"><img id="img6"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_06"/></div>
 						
 						<div class="thumbnail"><img id="img7"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
 						<div class="thumbnail"><img id="img8"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
 						<div class="thumbnail"><img id="img9"  src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
 						<div class="thumbnail"><img id="img10" src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
 						<div class="thumbnail"><img id="img11" src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
-						<div class="thumbnail"><img id="img12" src="images/gallery/thumbDefault.png"  rel="#pictureOverlay"/></div>
+						<div class="thumbnail"><img id="img12" src="images/gallery/thumbDefault.png"  rel="#pictureOverlay_12"/></div>
 					</div>
 					<div id="credits">Our engagment pictures were taken by our good friend <a href="http://sharpshooter.smugmug.com/" target="_blank">Jared Gab</a></div>
                   </div>
@@ -151,9 +151,32 @@
             <div class="bottomBar"></div>
         </div>
         
+		
+		
 	
 	<div class="apple_overlay" id="pictureOverlay"> 
 		Come on feet!
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_01"> 
+		<img src="images/gallery/01.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_02"> 
+		<img src="images/gallery/02.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_03"> 
+		<img src="images/gallery/03.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_04"> 
+		<img src="images/gallery/04.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_05"> 
+		<img src="images/gallery/05.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_06"> 
+		<img src="images/gallery/06.jpg"/>
+	</div> 
+	<div class="apple_overlay" id="pictureOverlay_12"> 
+		<img src="images/gallery/12.jpg"/>
 	</div> 
     </body>
 </html>
