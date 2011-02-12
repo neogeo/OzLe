@@ -44,12 +44,12 @@ function setUpOverlay(){
 	//initialize overlay
 	$(".thumbnail img[rel]").overlay({
 		mask: '#000',
-		effect: 'apple',
-		closeOnClick: true,
-		speed: 'fast',
-		onClose: function(){
+		effect: 'apple'//,
+		//closeOnClick: true,
+		//speed: 'fast',
+		/*onClose: function(){
 			$("#overlayImage").remove();
-		}
+		}*/
 	});
 	
 	$(".thumbnail img[rel]").click(function(){
@@ -121,12 +121,11 @@ function setUpRSVPForm(){
 
 function sendMail(firstName, lastName, numOfGuests, reception, wedding){
 	$("#RSVP_form").fadeOut("fast", function(){
-		//style
 		//show loading gif
 		setLoading("myForm");
 	});
 	
-	setTimeout(function(){
+	/*setTimeout(function(){
 		var info = document.createElement("div");
 		info.id = "result";
 		info.className = "success";
@@ -137,10 +136,37 @@ function sendMail(firstName, lastName, numOfGuests, reception, wedding){
 			$(".success").fadeIn("fast");
 		});
 	},5000);
-	/*
+	*/
+	
 	//make remote call
 	//if(counter Math.mod(counter, 2) == 0)
 	sendMailRemotelyOne(function(jsonStatusMsg, jsonString){
+				if (jsonStatusMsg.status.status == "success") {
+					//show success
+					var info = document.createElement("div");
+					info.id = "result";
+					info.className = "success";
+					info.innerHTML = "Thanks, your RSVP has been submitted";
+					$("#myForm").append(info);
+					
+					$("#loader").fadeOut("fast",function(){
+						$(".success").fadeIn("fast");
+					});
+				}else{//fail
+					//TODO: sendmailremotely2
+					sendMail2(firstName, lastName, numOfGuests, reception, wedding);
+				}
+			}, 
+			firstName, lastName, numOfGuests, reception, wedding
+	);
+		
+	//increase counter
+	counter++;
+}
+
+function sendMail2(firstName, lastName, numOfGuests, reception, wedding){
+	//make remote call
+	sendMailRemotelyTwo(function(jsonStatusMsg, jsonString){
 				if (jsonStatusMsg.status.status == "success") {
 					//show success
 					var info = document.createElement("div");
@@ -167,15 +193,38 @@ function sendMail(firstName, lastName, numOfGuests, reception, wedding){
 			}, 
 			firstName, lastName, numOfGuests, reception, wedding
 	);
-		*/
-	//increase counter
-	counter++;
 }
 
 function sendMailRemotelyOne(remoteCallback, firstName, lastName, numOfGuests, reception, wedding){
 	//try to load remotely
 	jQuery.ajax({ 	beforeSend: function(R) { R.setRequestHeader ( "Cache-Control", "no-cache, must-revalidate"); },
 			            url: "scripts/sendMail.jsp"+"?id="+new Date().getTime(), //prevent IE from caching response
+			            data: {'firstName':firstName, 'lastName':lastName, 'numOfGuests':numOfGuests, 'reception':reception, 'wedding':wedding },
+			            type: "POST", //use POST so the jsonString parameter may be very large
+			            dataType: "json",
+			            timeout: 60000,
+			            error: function(e1, e2){
+							var statusMsg = "{'status' : {'status':'failure', 'description':'"+ e1.statusText +"'} }";
+							//replace ticks with quotes for strict JSON parsing
+							statusMsg = statusMsg.replace(new RegExp(/'/g),"\"");
+							//output JSON object 
+							remoteCallback( JSON.parse(statusMsg) );
+			            },
+			            success: function(returned_data_json){
+						  	//de-seraialize json
+						  	var statusMsg = JSON.stringify(returned_data_json);
+							//replace ticks with quotes for strict JSON parsing
+							statusMsg = statusMsg.replace(new RegExp(/'/g),"\"");
+							//output JSON object 
+							remoteCallback( JSON.parse(statusMsg) );
+			            }
+		});
+}
+
+function sendMailRemotelyTwo(remoteCallback, firstName, lastName, numOfGuests, reception, wedding){
+	//try to load remotely
+	jQuery.ajax({ 	beforeSend: function(R) { R.setRequestHeader ( "Cache-Control", "no-cache, must-revalidate"); },
+			            url: "scripts/sendMail2.jsp"+"?id="+new Date().getTime(), //prevent IE from caching response
 			            data: {'firstName':firstName, 'lastName':lastName, 'numOfGuests':numOfGuests, 'reception':reception, 'wedding':wedding },
 			            type: "POST", //use POST so the jsonString parameter may be very large
 			            dataType: "json",

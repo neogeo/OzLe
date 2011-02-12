@@ -21,45 +21,46 @@
 }
 
 
+	
 #pictureOverlay_01 {
-		background-image:url(/gallery/01.jpg);
+		background-image:url(../images/gallery/01.jpg);
 		width:400px;
 		height:600px;
 		padding:0px;
 }
 #pictureOverlay_02 {
-		background-image:url(/gallery/02.jpg);
+		background-image:url(../images/gallery/02.jpg);
 		width:800px;
 		height:534px;
 		padding:0px;
 }
 #pictureOverlay_03 {
-		background-image:url(/gallery/03.jpg);
+		background-image:url(../images/gallery/03.jpg);
 		width:400px;
 		height:600px;
 		padding:0px;
 }
 #pictureOverlay_04 {
-		background-image:url(/gallery/04.jpg);
+		background-image:url(../images/gallery/04.jpg);
 		width:492px;
 		height:600px;
 		padding:0px;
 }
 #pictureOverlay_05 {
-		background-image:url(/gallery/05.jpg);
+		background-image:url(../images/gallery/05.jpg);
 		width:800px;
 		height:534px;
 		padding:0px;
 }
 #pictureOverlay_06 {
-		background-image:url(/gallery/06.jpg);
+		background-image:url(../images/gallery/06.jpg);
 		width:800px;
 		height:534px;
 		padding:0px;
 }
 
 #pictureOverlay_12 {
-		background-image:url(/gallery/12.jpg);
+		background-image:url(../images/gallery/12.jpg);
 		width:600px;
 		height:400px;
 		padding:0px;

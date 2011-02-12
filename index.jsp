@@ -74,49 +74,66 @@
             <div class="scrollable">
                <!-- root element for the items -->
                <div class="items">
+               	<!-- WELCOME -->
                   <div id="welcomeContent" class="content">
                      <div class="contentHeader"> <div class="bigText">Welcome</div> </div>
+					 <div class="contentLeft"></div>
+					 <div class="divider"></div>
+					 <div class="contentRight"></div>
                   </div>
-				  
+				  <!-- RSVP -->
                   <div id="rsvpContent" class="content">
                      <div class="contentHeader"> <div class="bigText">RSVP</div> </div>
-                      <br><br><br><br><br>
-                      <div class="text">Be sure to let us know you're coming</div>
-                      <br>
-                      <div id="myForm">
-                            <form id="RSVP_form" name="input">
-                                <div id="dynamicGuests"> 
-									
-    									Guest<hr class="line" > 
-										<br/>
-	                                    	<div class="formLabel">First Name</div><input id="rsvpFirstName" type="text" name="firstName" /><br/>
-											<div class="formLabel">Last Name</div><input  id="rsvpLastName"  type="text" name="lastName"  />
-										<br/>
-										<div class="formLabel">Number of Guests</div>
-										<select id="rsvpNumOfGuests">
-										  <option>1</option>
-										  <option>2</option>
-										  <option>3</option>
-										  <option>4</option>
-										  <option>5</option>
-										</select>
-										<br/>
-										<br/>
-										<input id="rsvpReception" class="checkbox" type="checkbox" name="reception" value="reception" /> Attending Reception <br/>
-										<input id="rsvpWedding"   class="checkbox" type="checkbox" name="wedding"   value="wedding" />   Attending Wedding <br/>
-									
-                                </div>
-								<br/>
-                                <!--input type="button" value="Add Guest" /-->
-                                <button id="submitRSVP" type="button">Submit</button>
-                            </form> 
-                      </div>
+                     
+                     <div class="contentLeft">
+                     		<div class="text" style='text-align: center;'>You can RSVP by filling out the form below</div>
+                      		<br>
+		                     <div id="myForm">
+		                           <form id="RSVP_form" name="input">
+		                               <div id="dynamicGuests"> 
+										
+		    								Guest<hr class="line" > 
+											<br/>
+			                                   	<div class="formLabel">First Name</div><input id="rsvpFirstName" type="text" name="firstName" /><br/>
+												<div class="formLabel">Last Name</div><input  id="rsvpLastName"  type="text" name="lastName"  />
+											<br/>
+											<div class="formLabel">Number of Guests</div>
+											<select id="rsvpNumOfGuests">
+											  <option>1</option>
+											  <option>2</option>
+											  <option>3</option>
+											  <option>4</option>
+											  <option>5</option>
+											</select>
+											<br/>
+											<br/>
+											<input id="rsvpReception" class="checkbox" type="checkbox" name="reception" value="reception" /> Attending Reception <br/>
+											<input id="rsvpWedding"   class="checkbox" type="checkbox" name="wedding"   value="wedding" />   Attending Wedding <br/>
+										
+		                               </div>
+									<br/>
+		                               <!--input type="button" value="Add Guest" /-->
+		                               <button id="submitRSVP" type="button">Submit</button>
+		                           </form> 
+		                     </div>
+                     </div>
+					 <div class="divider"></div>
+					 <div class="contentRight">
+					 	<div class="text" style='text-align: center;'>... or you can call the number below</div>
+						<br>
+						<div class='phoneNumber'><div class='number'>555-555-5555</div><div class'underline'></div></div>
+					 </div>
+					  
+					  
                   </div><!--rsvp-->
-				  
+				  <!-- THE PLACE -->
 				   <div id="placeContent" class="content">
-                    <div class="contentHeader"><div class="bigText">The Place</div> </div>
+                   	<div class="contentHeader"><div class="bigText">The Place</div> </div>
+					<div class="contentLeft"></div>
+					<div class="divider"></div>
+					<div class="contentRight"></div>
                   </div>
-				  
+				  <!-- PICS -->
 				  <div id="picsContent" class="content">
                     <div class="contentHeader"> <div class="bigText">Pictures</div> </div>
 					<div id="pictureFrame">
@@ -157,26 +174,13 @@
 	<div class="apple_overlay" id="pictureOverlay"> 
 		Come on feet!
 	</div> 
-	<div class="apple_overlay" id="pictureOverlay_01"> 
-		<img src="images/gallery/01.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_02"> 
-		<img src="images/gallery/02.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_03"> 
-		<img src="images/gallery/03.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_04"> 
-		<img src="images/gallery/04.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_05"> 
-		<img src="images/gallery/05.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_06"> 
-		<img src="images/gallery/06.jpg"/>
-	</div> 
-	<div class="apple_overlay" id="pictureOverlay_12"> 
-		<img src="images/gallery/12.jpg"/>
-	</div> 
+
+	<div class="apple_overlay" id="pictureOverlay_01"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_02"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_03"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_04"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_05"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_06"> 	</div> 
+	<div class="apple_overlay" id="pictureOverlay_12"> 	</div> 
     </body>
 </html>

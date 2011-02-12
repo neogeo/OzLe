@@ -110,9 +110,29 @@ root {
     margin-right: 10px;
 }
 
-.contentHeader{
+.content .contentHeader{
 	width:100%;
 	margin-bottom: 10px;
+}
+
+.content .contentLeft{
+	border: 1px solid;
+    height: 350px;
+    width: 45%;
+}
+.content .contentRight{
+	border: 1px solid;
+    float: right;
+    height: 350px;
+    margin-right: 20px;
+    width: 45%;
+}
+.content .divider{
+	border: 1px solid;
+    height: 350px;
+    margin-left: 37px;
+    width: 10px;
+	background:url(../images/divider.gif);
 }
 
 #rsvpContent{
@@ -163,6 +183,10 @@ root {
 }
 
 /*RSVP Form*/
+form{
+	margin-left: 80px;
+	margin-top:20px;
+}
 fieldset{
  	border:none;
 }
@@ -200,12 +224,33 @@ input{
 	height:400px; 
 	overflow: auto; 
 	text-align: center;
-	margin-left:40px;
+	margin-left: 120px;
+	margin-top:20px;
 }
 .success{
 	display:none;
 	height:400px; 
 	overflow: auto; 
 	text-align: center;
-	margin:5px 0px 0px 15px;
+	margin-top:20px;
+	margin-left: 80px;
+}
+
+.phoneNumber{
+    width: 292px;
+    height: 90px;
+    margin-top: 60px;
+    margin-left: 80px;
+	border: 1px solid;
+    font-size: 1.5em;
+}
+.phoneNumber .number{
+	margin-top: 30px;
+    text-align: center;
+    width: 100%;
+}
+.phoneNumber .underline{
+	border-top: 1px solid;
+    margin-left: 70px;
+    width: 150px;
 }
