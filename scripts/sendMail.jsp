@@ -19,7 +19,7 @@
 		props.setProperty("mail.transport.protocol", "smtp");
 		props.setProperty("mail.host", "smtp.gmail.com");
 		props.setProperty("mail.user", "neogeo.ku@gmail.com");
-		props.setProperty("mail.password", "*******");
+		props.setProperty("mail.password", "XXXXXXXX");
 		props.setProperty("mail.smtp.auth", "true");
     	props.setProperty("mail.smtp.port", "465");
     	props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
@@ -28,7 +28,7 @@
 			//mail session
 			javax.mail.Session mailSession = javax.mail.Session.getInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication(){ 
-					return new PasswordAuthentication("neogeo.ku@gmail.com","******");	
+					return new PasswordAuthentication("neogeo.ku@gmail.com","XXXXXXXX");	
 				}
 			});		
 			

@@ -24,6 +24,9 @@ root {
  width: 1024px;
 }
 
+.preload{
+	display:none;
+}
 /*Main Page*/
 
  .topBar{
@@ -69,7 +72,7 @@ root {
     border: 2px solid;
     margin-top: 22px;
     margin-bottom: 8px;
-    margin-left: 10.5%;
+    margin-left: 6.5%;
     background: white;
 	font-size: 1.4em;
 }
@@ -116,27 +119,36 @@ root {
 }
 
 .content .contentLeft{
-	border: 1px solid;
+	/*border: 1px solid;*/
     height: 350px;
     width: 45%;
 }
 .content .contentRight{
-	border: 1px solid;
+	/*border: 1px solid;*/
     float: right;
     height: 350px;
     margin-right: 20px;
     width: 45%;
 }
 .content .divider{
-	border: 1px solid;
+	/*border: 1px solid;*/
     height: 350px;
     margin-left: 37px;
     width: 10px;
 	background:url(../images/divider.gif);
 }
 
+.content .contentRight .flower{
+	position: absolute;
+    right: -20px;
+    top: 145px;
+}
 #rsvpContent{
 
+}
+
+.chocoBox{
+	/* chocolate box cufon */
 }
 /*Title bar*/
 #logo{
@@ -197,7 +209,11 @@ input{
  
 #submitRSVP{
 	margin-top:10px;	
-	margin-left:225px;
+	/*margin-left:225px;*/
+}
+
+#checkBoxes{
+	width:100%;
 }
 
 .formLabel{
@@ -206,7 +222,32 @@ input{
 	width:130px;
 	float:none;
 }
- 
+.required{
+    height: 16px;
+    width: 16px;
+    color: red;
+    float: right;
+    font-weight: bold;
+}
+.requiredField{
+	background-color: #F3F5C9;
+}
+.requiredCheckBoxes{
+	border: 1px dashed red;
+}
+.notRequiredCheckBoxes{
+	border: 1px dashed #FFFFFF;
+}
+.dither{
+	color: #9B9B9B;
+}
+.formUnderline{
+	border-top: 1px solid black;
+	width: 100%;
+	height:1px;
+	margin: 5px 0 0 0;
+}
+
 .line{
  	display:inline-table;
  	width:248px;
@@ -241,7 +282,7 @@ input{
     height: 90px;
     margin-top: 60px;
     margin-left: 80px;
-	border: 1px solid;
+	/*border: 1px solid;*/
     font-size: 1.5em;
 }
 .phoneNumber .number{
@@ -250,7 +291,8 @@ input{
     width: 100%;
 }
 .phoneNumber .underline{
-	border-top: 1px solid;
-    margin-left: 70px;
-    width: 150px;
+	border-top: 1px solid black;
+    height: 1px;
+    margin-left: 45px;
+    width: 200px;
 }

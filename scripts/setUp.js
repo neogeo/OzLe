@@ -3,7 +3,9 @@ var colors = { yellow:"#FFFF33", lightGreen:"#99FF33", green:"33FF66",
     lightBlue:"#33FFFF", blue:"#3366FF", darkBlue:"#6633FF", brown:"#C9B385"};
 
 var counter = 0;
-
+var fNameEntered = false;
+var lNameEntered = false;
+var weddingRecptionEntered = false;
 //ser up nav buttons 
 function navButtonHandler(element){
 	$('#'+element).click(function(){
@@ -44,7 +46,8 @@ function setUpOverlay(){
 	//initialize overlay
 	$(".thumbnail img[rel]").overlay({
 		mask: '#000',
-		effect: 'apple'//,
+		effect: 'apple',
+		speed: 800//,
 		//closeOnClick: true,
 		//speed: 'fast',
 		/*onClose: function(){
@@ -82,17 +85,131 @@ function setUpOverlay(){
 	});
 }
 
+function preloadPics(){
+	var hide = document.createElement('div');
+	hide.innerHTML = ""
+	+"<img class='preload' src='images/gallery/01.jpg'\/>"
+	+"<img class='preload' src='images/gallery/02.jpg'\/>"
+	+"<img class='preload' src='images/gallery/03.jpg'\/>"
+	+"<img class='preload' src='images/gallery/04.jpg'\/>"
+	+"<img class='preload' src='images/gallery/05.jpg'\/>"
+	+"<img class='preload' src='images/gallery/06.jpg'\/>"
+	+"<img class='preload' src='images/gallery/12.jpg'\/>";
+	
+	$("body").append(hide);
+}
+
+function receptionMap(){
+	var loadMap = true;
+	$("#reception").click(function(){
+		if (loadMap) {
+			//load map after sliding animation has finished
+			setTimeout(function(){
+			
+				var map = document.createElement('div');
+				map.innerHTML = '<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>'
+				
+				$("#receptionMap").append(map);
+				loadMap = false;
+			}, 500);
+		}
+	});
+	
+}
 function createScrollable(){
 	//create scrollable
 	$(".scrollable").scrollable({
-	     circular: true
+	     circular: false
 	}).navigator({
 	    navi: '.navBar',
 	    naviItem: '.navBox'
 	});
 }
 
+
 function setUpRSVPForm(){
+	//set astricks as float left
+	$("#fName").css("float","right");
+	$("#lName").css("float","right");
+	
+	
+	//clear form
+	$("#rsvpFirstName").val("");
+	$("#rsvpLastName").val("");
+	$("input:checkbox").removeAttr('checked');
+	
+	//on input field change
+	$("#rsvpFirstName").keyup(function(){
+		//get input
+		var txt = $(this).val();
+		//check for correct input 
+		if (txt == null || txt.length < 1 || txt.split(" ").join("").length < 1) {
+			//show asterick
+			$("#fName").css("display","block");
+			//make sure field is still highlighted
+			if(!$(this).hasClass("requiredField")){
+				$(this).addClass("requiredField");
+			}
+			
+			fNameEntered = false;
+		}else {//save
+			//remove required classes
+			$(this).removeClass("requiredField");
+			$("#fName").fadeOut("fast");
+			
+			fNameEntered = true;
+		}
+		
+		shouldUndiherSubmitButton();
+	});
+	
+	$("#rsvpLastName").keyup(function(){
+		//get input
+		var txt = $(this).val();
+		//check for correct input 
+		if (txt == null || txt.length < 1 || txt.split(" ").join("").length < 1) {
+			//show asterick
+			$("#lName").css("display","block");
+			//make sure field is still highlighted
+			if(!$(this).hasClass("requiredField")){
+				$(this).addClass("requiredField");
+			}
+			
+			lNameEntered = false;
+		}else {//save
+			//remove required classes
+			$(this).removeClass("requiredField");
+			$("#lName").fadeOut("fast");
+			
+			lNameEntered = true;
+		}
+		
+		shouldUndiherSubmitButton();
+	});
+	
+	$(".checkbox").change(function(){
+		var reception = $("#rsvpReception:checked").val();
+		var wedding = $("#rsvpWedding:checked").val();
+		
+		if ((reception == undefined) && (wedding == undefined)) {
+			//show required box
+			if (!$("#checkBoxes").hasClass("requiredCheckBoxes")){
+				$("#checkBoxes").removeClass("notRequiredCheckBoxes").addClass("requiredCheckBoxes");
+			}
+			
+			weddingRecptionEntered = false;
+		}else if ((reception != undefined) || (wedding != undefined)) {
+			//remove required box
+			if ($("#checkBoxes").hasClass("requiredCheckBoxes")) {
+				$("#checkBoxes").removeClass("requiredCheckBoxes").addClass("notRequiredCheckBoxes");
+				
+			}
+			weddingRecptionEntered = true;
+		}
+		
+		
+		shouldUndiherSubmitButton();
+	});
 	//set form submission
 	/*$(":button").click(function(){
 	 var newdiv = document.createElement('div');
@@ -101,22 +218,49 @@ function setUpRSVPForm(){
 	 counter++;
 	 });*/
 	$("#submitRSVP").click(function(){
-		var firstName = $("#rsvpFirstName").val();
-		var lastName = $("#rsvpLastName").val();
-		var numOfGuests = $("#rsvpNumOfGuests").val();
-		var reception = $("#rsvpReception:checked").val();
-		var wedding = $("#rsvpWedding:checked").val();
+		if(!$(this).hasClass("dither")){
+			var firstName = $("#rsvpFirstName").val();
+			var lastName = $("#rsvpLastName").val();
+			var numOfGuests = $("#rsvpNumOfGuests").val();
+			var reception = $("#rsvpReception:checked").val();
+			var wedding = $("#rsvpWedding:checked").val();
+			
+			//check input
+			firstName = (firstName == "") ? "blank" : firstName;
+			lastName = (lastName == "") ? "blank" : lastName;
+			reception = (reception == undefined) ? "blank" : reception;
+			wedding = (wedding == undefined) ? "blank" : wedding;
+			
+			//call sendMail
+			sendMail(firstName, lastName, numOfGuests, reception, wedding);
+		}else{
+			//highlight required fields
+			if(!fNameEntered){
+				$("#rsvpFirstName").effect("highlight", {queue:false, duration:1000 } );
+			}
+			if(!lNameEntered){
+				$("#rsvpLastName").effect("highlight", {queue:false, duration:1000 } );
+			}
+			if(!weddingRecptionEntered){
+				$("#checkBoxes").effect("highlight", {queue:false, duration:1000 } );
+			}
+		}
 		
-		//check input
-		firstName = (firstName == "") ? "blank" : firstName;
-		lastName = (lastName == "") ? "blank" : lastName;
-		reception = (reception == undefined) ? "blank" : reception;
-		wedding = (wedding == undefined) ? "blank" : wedding;
-		
-		//call sendMail
-		sendMail(firstName, lastName, numOfGuests, reception, wedding);
 	});
 	
+}
+
+function shouldUndiherSubmitButton(){
+	var $submit = $("#submitRSVP");
+	if(fNameEntered && lNameEntered && weddingRecptionEntered){
+		if($submit.hasClass("dither")){
+			$submit.removeClass("dither");
+		}
+	}else{
+		if (!$submit.hasClass("dither")) {
+			$submit.addClass("dither");
+		}
+	}
 }
 
 function sendMail(firstName, lastName, numOfGuests, reception, wedding){
