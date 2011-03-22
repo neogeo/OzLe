@@ -25,7 +25,10 @@ function navButtonHandler(element){
 				var newMenuItem = document.createElement("div");
 				newMenuItem.id = "extender";
 				$(this).append(newMenuItem);
-				$("#extender").css("height","15px").css("width","100%").css("margin-top","115px");
+				//for layout.css
+				//$("#extender").css("height","15px").css("width","100%").css("margin-top","115px").css("border","1px solid");
+				//for layoutSmall.css
+				$("#extender").css("height","30px").css("width","100%").css("margin-top","20px");
 			}
 			//bump up					
 	   		$(this).animate({ 

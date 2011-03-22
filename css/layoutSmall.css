@@ -12,7 +12,9 @@ body{
     font: normal 14px Verdana, arial, helvetica, sans-serif;
     color: #000;
     margin: 0;
-    /*background: url(../images/background.jpg) repeat;*/
+	/*background-color: #9cb694;
+	background-image: url(../images/backgroundGreen.jpg);
+	background-repeat: repeat-x;*/
 }
 
 root { 
@@ -62,25 +64,27 @@ root {
 
 .navBar{
     width:1024px;
-    height:180px;
+    height:100px;
 	/*background: url(../images/nav_background.jpg) repeat-x;*/
     background: #12268a;/*blue, gree#n70C556*/
     /*background: #196CAC;*/
 }
 
 .navBox{
-	background: url(../images/greenNavBox.jpg);
+	background: url(../images/whiteNavBox.jpg);
     position: relative;
     width:120px;
-    height: 120px;
+    height: 60px;
     float: left;
     border: 2px solid;
     margin-top: 22px;
     margin-bottom: 8px;
     margin-left: 6.5%;
-    background: white;
 	font-size: 1.4em;
 	text-align:center;
+}
+.navBox div{
+	margin-top:15px;
 }
 /*.navBox :hover{
     cursor: pointer;
