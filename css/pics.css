@@ -67,9 +67,6 @@
 	text-align:center;
 	margin-top: 10px;
 }
-.uploadButtonContainer:hover{
-	cursor:pointer;
-}
 
 .uploadStatus{
 	width:100%; 
