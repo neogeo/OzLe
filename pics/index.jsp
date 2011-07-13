@@ -107,24 +107,24 @@
 			<div class="banner"><div class='chocoBox' style='position:absolute;margin:15px 0 0 10px'>Share Your Pics</div></div>
 	    	
 				<div class="folderContainer">
-			    	<div id='ozle' class='folder'><div>LeAndOz</div></div>
-			    	<div id='mandy' class='folder'><div>Mandy</div></div>
 					<div id='catlin' class='folder'><div>Catlin</div></div>
-					<div id='ross' class='folder'><div>Ross</div></div>
-					<div id='jared' class='folder'><div>Jared</div></div>
-					<div id='gregashley' class='folder'><div>Greg & Ashley</div></div>
-					<div id='matthew' class='folder'><div>Matthew</div></div>
-			    	<div id='ozparents' class='folder'><div>Oz's Parents</div></div>
-					<div id='zack' class='folder'><div>Zack</div></div>
-					<div id='jason' class='folder'><div>Jason</div></div>
-					<div id='weeks' class='folder'><div>Weeks</div></div>
-					<div id='travis' class='folder'><div>Travis</div></div>
-					<div id='keithvalerie' class='folder'><div>Keith and Valerie</div></div>
-					<div id='jeffemma' class='folder'><div>Jeff and Emma</div></div>
-			     	<div id='shonhaylle' class='folder'><div>Shon and Haylle</div></div>
-					<div id='leparents' class='folder'><div>Le's Parents</div></div>
-					<div id='fanny' class='folder'><div>Fanny</div></div>
 					<div id='duongfamily' class='folder'><div>Duong Family</div></div>
+					<div id='fanny' class='folder'><div>Fanny</div></div>
+					<div id='gregashley' class='folder'><div>Greg & Ashley</div></div>
+					<div id='jared' class='folder'><div>Jared</div></div>
+					<div id='jason' class='folder'><div>Jason</div></div>
+					<div id='jeffemma' class='folder'><div>Jeff and Emma</div></div>
+					<div id='keithvalerie' class='folder'><div>Keith and Valerie</div></div>
+					<div id='leparents' class='folder'><div>Le's Parents</div></div>
+			    	<div id='mandy' class='folder'><div>Mandy</div></div>
+					<div id='matthew' class='folder'><div>Matthew</div></div>
+			    	<div id='ozle' class='folder'><div>LeAndOz</div></div>
+			    	<div id='ozparents' class='folder'><div>Oz's Parents</div></div>
+					<div id='ross' class='folder'><div>Ross</div></div>
+			     	<div id='shonhaylle' class='folder'><div>Shon and Haylle</div></div>
+					<div id='travis' class='folder'><div>Travis</div></div>
+					<div id='weeks' class='folder'><div>Weeks</div></div>
+					<div id='zack' class='folder'><div>Zack</div></div>
 				</div>
 			<div class="bottomBar"></div>
 		</div>
