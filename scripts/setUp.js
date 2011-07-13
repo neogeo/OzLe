@@ -110,8 +110,21 @@ function receptionMap(){
 			setTimeout(function(){
 			
 				var map = document.createElement('div');
-				map.innerHTML = '<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>'
-				
+				//map.innerHTML = '<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>'
+				map.innerHTML ='<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5015+E.+29th+St.+N,+Wichita,+KS&amp;aq=&amp;ie=UTF8&amp;hq=&amp;hnear=5015+E+29th+St+N,+Wichita,+Kansas+67220&amp;ll=37.743164,-97.276211&amp;spn=0.023755,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5015+E.+29th+St.+N,+Wichita,+KS&amp;aq=&amp;ie=UTF8&amp;hq=&amp;hnear=5015+E+29th+St+N,+Wichita,+Kansas+67220&amp;ll=37.743164,-97.276211&amp;spn=0.023755,0.036478&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>';
+				$("#receptionMap").append(map);
+				loadMap = false;
+			}, 500);
+		}
+	});
+	$("#rsvpLink").click(function(){
+		if (loadMap) {
+			//load map after sliding animation has finished
+			setTimeout(function(){
+			
+				var map = document.createElement('div');
+				//map.innerHTML = '<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1150+North+Broadway+wichita+ks&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.099308,84.375&amp;ie=UTF8&amp;hq=&amp;hnear=1150+N+Broadway+St,+Wichita,+Sedgwick,+Kansas+67214&amp;ll=37.713294,-97.334232&amp;spn=0.022067,0.025835&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>'
+				map.innerHTML ='<iframe width="425" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=5015+E.+29th+St.+N,+Wichita,+KS&amp;aq=&amp;ie=UTF8&amp;hq=&amp;hnear=5015+E+29th+St+N,+Wichita,+Kansas+67220&amp;ll=37.743164,-97.276211&amp;spn=0.023755,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=5015+E.+29th+St.+N,+Wichita,+KS&amp;aq=&amp;ie=UTF8&amp;hq=&amp;hnear=5015+E+29th+St+N,+Wichita,+Kansas+67220&amp;ll=37.743164,-97.276211&amp;spn=0.023755,0.036478&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>';
 				$("#receptionMap").append(map);
 				loadMap = false;
 			}, 500);
@@ -129,6 +142,10 @@ function createScrollable(){
 	});
 }
 
+function rsvpLink(){
+	var api = $(".scrollable").data("scrollable");
+	api.move(3);
+}
 
 function setUpRSVPForm(){
 	//set astricks as float left

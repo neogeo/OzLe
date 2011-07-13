@@ -10,13 +10,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Andrew & Le</title>
         <link rel="stylesheet" type="text/css" href="css/layoutSmall.css" />
         <link rel="stylesheet" type="text/css" href="css/jtools.css" />
 		<link rel="stylesheet" type="text/css" href="css/overlay.css" />
         
         <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.4/full/jquery.tools.min.js"></script>
+        <script type="text/javascript" src="js/jquery.tools.1.2.5.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
 		<script type="text/javascript" src="scripts/setUp.js"></script>
 		
@@ -24,7 +24,14 @@
 		<script type="text/javascript" src="js/ChocolateBox_400.font.js"></script>
 		<script type="text/javascript" src="js/boldChocoBox_400.font.js"></script>
 
-
+		<style type="text/css">
+			#rsvpLink{
+				text-decoration: underline;
+			}
+			#rsvpLink:hover{
+				cursor:pointer;
+			}
+		</style>
 
         <script type="text/javascript">
            Cufon.replace('.chocoBox');
@@ -33,11 +40,11 @@
             $(document).ready(function(){
 				if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
 					var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
-					if (ieversion < 8) {
+					//if (ieversion < 8) {
 						$("#frame").html("This web site is not compatible with your browser (Internet Explorer " + ieversion + ").<br> Try using Firefox or Chrome instead<br>" +
 						"<a href='http://www.getfirefox.net'><img border='0' alt='Firefox' title='Firefox' src='http://sfx-images.mozilla.org/affiliates/Buttons/110x32/get.gif' /></a>" +
 						"<a href='http://www.google.com/chrome/index.html?hl=en&brand=CHNG&utm_source=en-hpp&utm_medium=hpp&utm_campaign=en'> <img border=0 alt='Chrome' title='Chrome' src='images/chrome.jpg'></a>");
-					}
+					//}
 				}
 				
 				
@@ -60,7 +67,12 @@
 				receptionMap();
 				
 				
-				
+				//setup rsvp link from homepage
+				$("#rsvpLink").click(function(){
+					rsvpLink();
+				});
+					
+
 				
             });
 
@@ -91,6 +103,7 @@
                      <div class="contentHeader"><div class="bigText">Love. Friendship. Laughter</div> </div>
 					 <div class="contentLeft" style="width:400px;">
 					 <div class='text' style='margin-top: 60px; text-align:center; width:100%;'>
+					 	<b>The location of the reception has been moved, <span id="rsvpLink" >click here</span></b><br><br>
 					 	Please join us for the union of love,<br> friendship, laughter, and family as the <br> Daughter of Loc and Lan Tran<br>
 <img src='images/names.jpg'>
 <br>
@@ -157,13 +170,14 @@
                      <div class="contentHeader"> <div class="bigText">Reception</div> </div>
 					 <div class="contentLeft">
 					 	<div style="text-align: center; margin-top: 70px;" class="text">
+						The location for the reception has been <b>moved</b> to the Eugene Hughes Metropolitan Complex<br>
 						Come celebrate our marriage with hors d'oeuvres and desserts: 
 						<br>
 						<div style="width: 100%; margin-bottom: 10px;margin-top: 10px;"> 
 								Saturday, 6pm July 30, 2011 
 								<br> 
-								<br> Midtown Community Resource Center
-								<br> 1150 North Broadway
+								<br> Eugene Hughes Metropolitan Complex
+								<br> 5015 E. 29th St. N
 								<br> Wichita, KS
 						</div>
 						</div>
@@ -223,7 +237,7 @@
 					 <div class="contentRight" style='position: relative; overflow: hidden;'>
 					 	<div class="text" style='text-align: center;'>... or you can call the number below</div>
 						<br>
-						<div class='phoneNumber'><div class='number'>555-555-5555</div><div class='underline'></div></div>
+						<div class='phoneNumber'><div class='number chocoBox'>505-433-RSVP</div><div class='underline'></div></div>
 						<div class='flower'><img src='images/flowersBlue.png'/></div>
 					 </div>
 					  
