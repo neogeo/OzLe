@@ -1,20 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
     "http://www.w3.org/TR/html4/strict.dtd">
 
-<%@ page import= "org.apache.axis2.AxisFault" %>
-<%@ page import= "org.apache.axis2.util.URL" %>
-
-<%@ page import= "com.businessobjects.dsws.Connection" %>
-<%@ page import= "com.businessobjects.dsws.Consumer" %>
-<%@ page import= "com.businessobjects.dsws.session.DSWSException" %>
-<%@ page import= "com.businessobjects.dsws.session.EnterpriseCredential" %>
-<%@ page import= "com.businessobjects.dsws.session.Session" %>
-<%@ page import= "com.businessobjects.dsws.session.SessionInfo"  %>
-
 <%
-
-	
+	session = request.getSession();
+	session.setAttribute("folderName","oz");
 %>
+
+
 
 <!--  extracted cos.jsr -->
 <!--Edit /etc/httpd/conf/js_modsecurity/useragents.conf. SecRule HTTP_User-Agent  "^Shockwave Flash"-->			
@@ -23,18 +15,14 @@
 <html>
 
 	<head>
-			<meta http-equiv="Content-type" name="desktop" content="text/html;charset=UTF-8">
+		<meta http-equiv="Content-type" name="desktop" content="text/html;charset=UTF-8">
     	<title></title>
-<!-- jquery must load first -->
-<script type="text/javascript" src="scripts/jquery/jquery-1.3.2.min.js"></script>
-
+		<!-- jquery must load first -->
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="swfcore/jquery.swfupload.js"></script>	
 		<script type="text/javascript" src="swfcore/swfupload.js"></script>
 		
 		
-		
-	
-	
 	<style type="text/css">
 		html,body { height:100%; width:100%; }
 		
@@ -50,9 +38,9 @@
     	$('#swfupload-control').swfupload({
     		upload_url: "upload.jsp"+";jsessionid=<%= session.getId() %>",
     		flash_url : "swfcore/Flash/swfupload.swf",
-    		 post_params: {"JSESSIONID" : "<%= session.getId() %>"},
+    		post_params: {"JSESSIONID" : "<%= session.getId() %>"},
     		file_size_limit : "10240",
-    		file_types : "*.*",
+    		file_types : "*.jpg;*.gif;*.bmp;*.jpeg;",
     		file_types_description : "All Files",
     		file_upload_limit : "0",
     		button_image_url : 'swfcore/XPButtonUploadText_61x22.png',
@@ -96,7 +84,6 @@
     		.bind('uploadError', function(event, file, errorCode, message){
     			$('#log').append('<li>Upload error - '+message+'</li>');
     		});
-    	
     });	
      
     </script> 

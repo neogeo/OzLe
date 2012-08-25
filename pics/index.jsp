@@ -96,7 +96,12 @@
 		$('#duongfamily').click(function(){
 			window.location.href = "viewpics.jsp?folderName=duongfamily&dn=DuongFamily";
 		});
-				
+		$('#christmas2011').click(function(){
+			window.location.href = "viewpics.jsp?folderName=christmas2011&dn=christmas2011";
+		});	
+		$('#newyears').click(function(){
+			window.location.href = "viewpics.jsp?folderName=newyears&dn=New Years Eve";
+		});	
     });
     
 	</script> 
@@ -125,6 +130,8 @@
 					<div id='travis' class='folder'><div>Travis</div></div>
 					<div id='weeks' class='folder'><div>Weeks</div></div>
 					<div id='zack' class='folder'><div>Zack</div></div>
+					<div id='christmas2011' class='folder'><div>Christmas 2011</div></div>
+					<div id='newyears' class='folder'><div>New Years Eve</div></div>
 				</div>
 			<div class="bottomBar"></div>
 		</div>
