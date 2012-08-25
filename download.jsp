@@ -9,21 +9,33 @@ System.out.println("    foldername "+folderName);
 ServletContext context = session.getServletContext();
 String realContextPath = context.getRealPath(request.getContextPath());
 
-//remove request-context-path from realContextPath
-String[] sArr = realContextPath.split("\\\\");
-StringBuffer newContextPath = new StringBuffer();
-	for(int i=0; i<sArr.length-1; i++){
-		newContextPath.append(sArr[i]);
-		newContextPath.append(File.separator);
-	}
+boolean isWindows = (System.getProperty("os.name").startsWith("Windows"))? true : false;
 
-realContextPath = newContextPath.toString();
+//Set working set, depending on OS
+String workingSet = null;
+String OS_PATH_SEPERATOR = null;
+if (isWindows) {
+	OS_PATH_SEPERATOR = "\\";
+	//remove request-context-path from realContextPath
+	String[] sArr = realContextPath.split("\\\\");
+	StringBuffer newContextPath = new StringBuffer();
+		for(int i=0; i<sArr.length-1; i++){
+			newContextPath.append(sArr[i]);
+			newContextPath.append(File.separator);
+		}
 
+	realContextPath = newContextPath.toString();
 
-String workingSet  = realContextPath + "pics\\" + folderName;
-String zipWorkingSet = workingSet + "\\zip";
+	workingSet  = realContextPath + "pics\\" + folderName;
+}else{
+	//Linux
+	OS_PATH_SEPERATOR = "/";
+	workingSet  = realContextPath + "/pics/" + folderName;
+}
+
+String zipWorkingSet = workingSet + OS_PATH_SEPERATOR + "zip";
 String zipFileName = "pictures.zip";
-String modFilePath = workingSet + "\\mod.txt";
+String modFilePath = workingSet + OS_PATH_SEPERATOR + "mod.txt";
 System.out.println("looking at pictures in "+workingSet);
 
 File modFile = new File(modFilePath);
@@ -97,11 +109,12 @@ public void setNotModified(String modFilePath){
 }
 
 public boolean zipPics(String workingSet, String zipWorkingSet, String zipFileName){
+	String OS_PATH_SEPERATOR = (System.getProperty("os.name").startsWith("Windows"))? "\\" : "/";
 	final int BUFFER = 2048;
    try {
       BufferedInputStream origin = null;
-      FileOutputStream dest = new FileOutputStream( zipWorkingSet+"\\"+zipFileName );
-      System.out.println( "Save to: "+ zipWorkingSet+"\\"+zipFileName);
+      FileOutputStream dest = new FileOutputStream( zipWorkingSet + OS_PATH_SEPERATOR + zipFileName );
+      System.out.println( "Save to: "+ zipWorkingSet + OS_PATH_SEPERATOR + zipFileName);
       ZipOutputStream zOut = new ZipOutputStream(new BufferedOutputStream(dest));
       //set to compress
       zOut.setMethod(ZipOutputStream.DEFLATED);

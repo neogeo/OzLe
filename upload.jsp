@@ -23,21 +23,34 @@ System.out.println(request.getParameter("JSESSIONID"));
 ServletContext context = session.getServletContext();
 String realContextPath = context.getRealPath(request.getContextPath());
 
-	//remove request-context-path from realContextPath
-	String[] sArr = realContextPath.split("\\\\");
-	StringBuffer newContextPath = new StringBuffer();
-		for(int i=0; i<sArr.length-1; i++){
-			newContextPath.append(sArr[i]);
-			newContextPath.append(File.separator);
-		}
+boolean isWindows = (System.getProperty("os.name").startsWith("Windows"))? true : false;
+
+String folderName = (String)session.getAttribute("folderName");
+System.out.println("    foldername "+folderName);
+String workingSet  = null;
+String modFilePath = null;
 	
-	realContextPath = newContextPath.toString();
+//Set working set and modfilepath, depending on OS
+	if (isWindows) {
+		//remove request-context-path from realContextPath
+		String[] sArr = realContextPath.split("\\\\");
+		StringBuffer newContextPath = new StringBuffer();
+			for(int i=0; i<sArr.length-1; i++){
+				newContextPath.append(sArr[i]);
+				newContextPath.append(File.separator);
+			}
+		
+		realContextPath = newContextPath.toString();
+		//load each file
+		workingSet  = realContextPath  + "pics\\" + folderName;
+		modFilePath = workingSet + "\\mod.txt";
+	}else{
+		//Linux
+		//load each file
+		workingSet  = realContextPath  + "/pics/" + folderName;
+		modFilePath = workingSet + "/mod.txt";
+	}
 	
-	String folderName = (String)session.getAttribute("folderName");
-	System.out.println("    foldername "+folderName);
-	//load each file
-	String workingSet  = realContextPath  + "pics\\" + folderName;
-	String modFilePath = workingSet + "\\mod.txt";
 	System.out.println("    saving to "+workingSet);
 	
 	if(folderName!=null){
